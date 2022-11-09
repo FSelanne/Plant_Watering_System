@@ -1,1 +1,24 @@
-test 123
+class MicroController:
+  
+  def __init__(self, temp, hum, water, moist):
+    self.temp = temp
+    self.hum = hum
+    self.water = water
+    self.moist = moist
+
+def get_moisture(self):
+    pass
+
+def get_temperature(self):
+    pass
+
+def get_waterlevel(self):
+    pass
+
+def get_humidity(self):
+    pass
+
+
+
+
+Standard_Program = MicroController()
