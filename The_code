@@ -60,7 +60,7 @@ class MicroControllerSettings:
         else:
             distribution = "C6: Water level not sufficient enough. Please refill."
         if distribution == 0:
-            distribution = "The plant does not require water"
+            distribution = "The plant should not be watered"
 
         return "Distribution = ", distribution  # "The system will output %i mm of water" % distribution
 
