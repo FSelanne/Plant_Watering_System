@@ -44,6 +44,7 @@ class MicroControllerSettings:
 
 
     def calculate_water_distribution(self):
+        distribution = 0
         if self.water_needed == False:
             if self.moisture_needed and self.temperature_optimal and self.humidity_optimal:
                 distribution = "C1: ", 25
@@ -58,8 +59,10 @@ class MicroControllerSettings:
             
         else:
             distribution = "C6: Water level not sufficient enough. Please refill."
+        if distribution == 0:
+            distribution = "The plant does not require water"
 
-        return "Amount of water to be distributed:", distribution  # "The system will output %i mm of water" % distribution
+        return "Distribution = ", distribution  # "The system will output %i mm of water" % distribution
 
         
         return distribution
