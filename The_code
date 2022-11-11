@@ -45,7 +45,6 @@ class MicroControllerSettings:
 
     def calculate_water_distribution(self):
         if self.water_needed == False:
-            print(self.death_imminent)
             if self.moisture_needed and self.temperature_optimal and self.humidity_optimal:
                 distribution = "C1: ", 25
             elif self.moisture_needed and self.temperature_optimal and self.humidity_optimal == False:
