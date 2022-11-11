@@ -13,49 +13,57 @@ class MicroControllerSettings:
         self.water_needed = False
         self.humidity_optimal = False
         self.moisture_sub_optimal = False
-
+        self.current_temp_not_optimal = False
+        self.current_humidity_not_optimal = False
+        self.death_imminent = False
+        self.danger_moist = 10
 
     def calculate_moisture(self, current_moisture):
         if current_moisture < self.min_moist:
             self.moisture_needed = True
-            if self.min_moist < current_humidity < self.max_moist:
-                self.moisture_sub_optimal = True
-
+        elif self.min_moist < current_moisture < self.max_moist:
+            self.moisture_sub_optimal = True
+        if current_moisture < self.danger_moist:
+            self.death_imminent = True
 
     def calculate_temperature(self, current_temperature):
         if self.min_temp < current_temperature < self.max_temp:
             self.temperature_optimal = True
-            if current_temperature in range((self.min_temp - self.min_temp-2)) or range (self.max_temp - (self.max_temp+2)):
-                self.current_temp_not_optimal = True
+        elif current_temperature in range((self.min_temp+2), (self.min_temp-2)) or range((self.max_temp-2), (self.max_temp+2)):
+            self.current_temp_not_optimal = True
 
     def calculate_water_level(self, current_water_level):
-        if self.min_water_level < current_water_level:
+        if self.min_water_level > current_water_level:
             self.water_needed = True
 
     def calculate_humidity(self, current_humidity):
-        if self.min_moist < current_moisture < self.max_moist:
+        if self.min_hum < current_humidity < self.max_hum:
             self.humidity_optimal = True
+        elif current_humidity in range((self.min_hum-5), (self.max_hum+5)):
+            self.current_humidity_not_optimal = True
+
 
     def calculate_water_distribution(self):
         if self.water_needed == False:
+            print(self.death_imminent)
             if self.moisture_needed and self.temperature_optimal and self.humidity_optimal:
-                distribution = 25
+                distribution = "C1: ", 25
             elif self.moisture_needed and self.temperature_optimal and self.humidity_optimal == False:
-                distribution = 12.5
+                distribution = "C2: ", 12.5
             elif self.moisture_needed and self.temperature_optimal == False and self.humidity_optimal:
-                distribution = 12.5
-
-            elif self.moisture_needed and self.moisture_sub_optimal and self.temperature_optimal and  and self.humidity_optimal == False:
-                distribution = 12.5
-                #20%> CM <30% ∧ CT >= 25 +/-2 ∨ CT <= 8 +/- 2 ∧ 35%> CH <45%
-            elif self.moisture_needed == True and self.temperature_optimal == False and self.humidity_optimal == False:
-                distribution = 12.5
+                distribution = "C3: ", 12.5
+            elif self.moisture_sub_optimal and self.current_temp_not_optimal and self.current_humidity_not_optimal:
+                distribution = "C4: ", 12.5
+            if self.death_imminent == True:
+                distribution = "C5:", 37.5
+            
         else:
-            distribution = "Water level not sufficient enough. Please refill."
+            distribution = "C6: Water level not sufficient enough. Please refill."
 
-        return "The system will output %i mm of water" % distribution
+        return "Amount of water to be distributed:", distribution  # "The system will output %i mm of water" % distribution
 
-
+        
+        return distribution
 #---------------------------------------------------------------
 
 Standard_Program = MicroControllerSettings(8, 25, 40, 100, 37.5, 20, 100)
@@ -66,8 +74,6 @@ current_humidity = int(input("What is the current humidity in %? "))
 current_water_level = int(input("What is the current water level in mm? "))
 Standard_Program.calculate_moisture(current_moisture)
 Standard_Program.calculate_humidity(current_humidity)
-Standard_Program.calculate_temperature(current_moisture)
+Standard_Program.calculate_temperature(current_temperature)
 Standard_Program.calculate_water_level(current_water_level)
 print(Standard_Program.calculate_water_distribution())
-
-
