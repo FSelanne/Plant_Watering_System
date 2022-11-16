@@ -1,3 +1,5 @@
+import unittest
+
 class MicroControllerSettings:
   
     def __init__(self, min_temp, max_temp, min_hum, max_hum, min_water_level, min_moist, max_moist):
@@ -62,18 +64,33 @@ class MicroControllerSettings:
         if distribution == 0:
             distribution = "The plant should not be watered"
 
-        return "Distribution (in mm) = ", distribution 
-
+        return "Distribution = ", distribution  # "The system will output %i mm of water" % distribution    
         
-        return distribution
+
+
 #---------------------------------------------------------------
 
 Standard_Program = MicroControllerSettings(8, 25, 40, 100, 37.5, 20, 100)
 
+''' To get condition 1: '''
+
+#current_moisture = 15
 current_moisture = int(input("What is the current moisture in %? "))
+#assert Standard_Program.calculate_moisture(current_moisture)
 current_temperature = int(input("What is the current temperature in celsius? "))
 current_humidity = int(input("What is the current humidity in %? "))
 current_water_level = int(input("What is the current water level in mm? "))
+Standard_Program.calculate_moisture(current_moisture)
+Standard_Program.calculate_humidity(current_humidity)
+Standard_Program.calculate_temperature(current_temperature)
+Standard_Program.calculate_water_level(current_water_level)
+print(Standard_Program.calculate_water_distribution())
+
+#Condition 1
+current_moisture = 15
+current_temperature = 22
+current_humidity = 44
+current_water_level = 55
 Standard_Program.calculate_moisture(current_moisture)
 Standard_Program.calculate_humidity(current_humidity)
 Standard_Program.calculate_temperature(current_temperature)
