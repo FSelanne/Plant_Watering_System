@@ -62,7 +62,7 @@ class MicroControllerSettings:
         if distribution == 0:
             distribution = "The plant should not be watered"
 
-        return "Distribution = ", distribution  # "The system will output %i mm of water" % distribution
+        return "Distribution (in mm) = ", distribution 
 
         
         return distribution
