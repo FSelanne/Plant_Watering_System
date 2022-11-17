@@ -179,3 +179,4 @@ print(Standard_Program.calculate_water_distribution())
 
 
 
+#Next iteration: while loop, import maths to add random in order for values to change.
