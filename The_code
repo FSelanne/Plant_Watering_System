@@ -1,5 +1,3 @@
-import unittest
-
 class MicroControllerSettings:
   
     def __init__(self, min_temp, max_temp, min_hum, max_hum, min_water_level, min_moist, max_moist):
