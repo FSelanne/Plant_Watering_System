@@ -29,7 +29,7 @@ class MicroControllerSettings:
     def calculate_temperature(self, current_temperature):
         if self.min_temp <= current_temperature <= self.max_temp:
             self.temperature_optimal = True
-        elif current_temperature in range((self.min_temp-2), (self.min_temp+3)) or current_temperature in range((self.max_temp-2), (self.max_temp+3)):
+        if current_temperature in range((self.min_temp-2), (self.min_temp+3)) or current_temperature in range((self.max_temp-2), (self.max_temp+3)):
             self.current_temp_not_optimal = True
 
     def calculate_water_level(self, current_water_level):
@@ -39,7 +39,7 @@ class MicroControllerSettings:
     def calculate_humidity(self, current_humidity):
         if self.min_hum <= current_humidity <= self.max_hum:
             self.humidity_optimal = True
-        elif current_humidity in range((self.min_hum-5), (self.max_hum+5)):
+        if current_humidity in range((self.min_hum-5), (self.max_hum+5)):
             self.current_humidity_not_optimal = True
 
 
