@@ -2,6 +2,8 @@
 
 #----Unit testing-----------------------------------------------------------------------
 
+Standard_Program = MicroControllerSettings(8, 25, 40, 100, 37.5, 20, 100)
+
 #Condition 1 (optimal conditions for watering)
 current_moisture = 15
 current_temperature = 22
@@ -56,6 +58,8 @@ Standard_Program.calculate_water_level(current_water_level)
 print("Condition 4:")
 print(Standard_Program.calculate_water_distribution())
 
+Standard_Program = MicroControllerSettings(8, 25, 40, 100, 37.5, 20, 100)
+
 #Condition 5 (pre-emptive - to prevent worst case scenario - before it goes too bad (temp LOW))
 current_moisture = 25
 current_temperature = 7
@@ -71,7 +75,6 @@ print(Standard_Program.calculate_water_distribution())
 Standard_Program = MicroControllerSettings(8, 25, 40, 100, 37.5, 20, 100)
 
 #Condition 6 (pre-emptive - Temperature low+2 rest ok)
-
 current_moisture = 26
 current_temperature = 10
 current_humidity = 45
@@ -83,8 +86,9 @@ Standard_Program.calculate_water_level(current_water_level)
 print("Condition 6:")
 print(Standard_Program.calculate_water_distribution())
 
-#Condition 7 (pre-emptive - Temperature high-2 rest ok)
+Standard_Program = MicroControllerSettings(8, 25, 40, 100, 37.5, 20, 100)
 
+#Condition 7 (pre-emptive - Temperature high-2 rest ok)
 current_moisture = 22
 current_temperature = 23
 current_humidity = 35
@@ -95,6 +99,8 @@ Standard_Program.calculate_temperature(current_temperature)
 Standard_Program.calculate_water_level(current_water_level)
 print("Condition 7:")
 print(Standard_Program.calculate_water_distribution())
+
+Standard_Program = MicroControllerSettings(8, 25, 40, 100, 37.5, 20, 100)
 
 #Condition 8 (pre-emptive - to prevent worst case scenario - before it goes too bad (temp HIGH))
 current_moisture = 25
@@ -108,6 +114,7 @@ Standard_Program.calculate_water_level(current_water_level)
 print("Condition 8:")
 print(Standard_Program.calculate_water_distribution())
 
+Standard_Program = MicroControllerSettings(8, 25, 40, 100, 37.5, 20, 100)
 
 #Condition 9 (Low moisture, too high temperature and too low humidity)
 
@@ -122,6 +129,8 @@ Standard_Program.calculate_water_level(current_water_level)
 print("Condition 9:")
 print(Standard_Program.calculate_water_distribution())
 
+Standard_Program = MicroControllerSettings(8, 25, 40, 100, 37.5, 20, 100)
+
 #Condition 10 ( moisture lower than 10%)
 current_moisture = 5
 current_temperature = 22
@@ -135,8 +144,6 @@ print("Condition 10:")
 print(Standard_Program.calculate_water_distribution())
 
 Standard_Program = MicroControllerSettings(8, 25, 40, 100, 37.5, 20, 100)
-
-
 
 #Condition 11 (water barrel less than 37.5mm water)
 current_moisture = 15
