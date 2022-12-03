@@ -48,11 +48,11 @@ class MicroControllerSettings:
         if self.water_needed == False:
             if self.moisture_needed and self.temperature_optimal and self.humidity_optimal:
                 distribution = 25 #C1
-            elif self.moisture_needed and self.temperature_optimal and self.humidity_optimal == False:
+            if self.moisture_needed and self.temperature_optimal and self.humidity_optimal == False:
                 distribution = 12.5 #C2
-            elif self.moisture_needed and self.temperature_optimal == False and self.humidity_optimal:
+            if self.moisture_needed and self.temperature_optimal == False and self.humidity_optimal:
                 distribution = 12.5 #C3
-            elif self.moisture_sub_optimal and self.current_temp_not_optimal and self.current_humidity_not_optimal:
+            if self.moisture_sub_optimal and self.current_temp_not_optimal and self.current_humidity_not_optimal:
                 distribution = 12.5 #C4
             if self.death_imminent == True:
                 distribution = 37.5 #C5
