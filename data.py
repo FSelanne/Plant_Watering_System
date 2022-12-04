@@ -120,7 +120,7 @@ Standard_Program = MicroControllerSettings(8, 25, 40, 100, 37.5, 20, 100)
 
 current_moisture = 15
 current_temperature = 28
-current_humidity = 35
+current_humidity = 34
 current_water_level = 55
 Standard_Program.calculate_moisture(current_moisture)
 Standard_Program.calculate_humidity(current_humidity)
