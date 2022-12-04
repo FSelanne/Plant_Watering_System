@@ -39,7 +39,7 @@ class MicroControllerSettings:
     def calculate_humidity(self, current_humidity):
         if self.min_hum <= current_humidity <= self.max_hum:
             self.humidity_optimal = True
-        if current_humidity in range((self.min_hum-5), (self.max_hum+5)):
+        if current_humidity in range((self.min_hum-5), (self.max_hum+6)):
             self.current_humidity_not_optimal = True
 
 
