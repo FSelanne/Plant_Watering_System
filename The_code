@@ -58,7 +58,7 @@ class MicroControllerSettings:
                 distribution = 37.5 #C5
             
         else:
-            distribution = "C6: Water level is not sufficient enough. Please refill."
+            distribution = "Water level is not sufficient enough. Please refill."
         if distribution == 0:
             distribution = "The plant should not be watered"
 
